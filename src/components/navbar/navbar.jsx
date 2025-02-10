@@ -11,11 +11,13 @@ const Navbar = () => {
       <div className="navbar">
         <div className="nav-links">
           <Link to='/investors' className="nav-link">My Investments</Link>
-          <span className="separator">||</span>
+          ||
           <Link to='/' className="nav-link">Companies</Link>
         </div>
-          {userDetails.userId ? "UserId : "+userDetails.userId : 'Not logged in'} 
-         | Hello {userDetails.username ? userDetails.username : ''} 
+          
+          {/* {userDetails.userId ? "UserId : "+userDetails.userId : <Link to='/log' className="nav-link">Login</Link>}  */}
+          {userDetails.userId ? " " : <Link to='/log' className="nav-link">Login</Link>} 
+          {userDetails.username ? "Hello  "+userDetails.username : ''} 
       </div>
       <Outlet />
     </Fragment>

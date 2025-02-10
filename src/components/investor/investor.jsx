@@ -20,8 +20,8 @@ const Investor = () => {
       {
         data.map((e) => (
           <div className='course-box' key={e.id}>
-            <h1>{e.name}</h1>
-            <h1>{e.stockCount}</h1>
+              <h2 style={{ color: 'green' }}> {e.name}</h2>
+              <h3 style={{ color: 'green' }}> Invested- {e.stockCount} </h3>
           </div>
         ))
       }
