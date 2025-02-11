@@ -16,8 +16,7 @@ const Assignstocks = () => {
     axios.post("http://localhost:9091/company/assignStocks", null, {
       params: {
         companyId: md,
-        investorId: 
-        userDetails.userId,
+        investorId: userDetails.userId,
         stocksToAssign: stocksToAssign
       }
     })
