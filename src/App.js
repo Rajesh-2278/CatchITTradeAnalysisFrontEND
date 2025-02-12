@@ -6,6 +6,7 @@ import Investor from './components/investor/investor';
 import Assignstocks from './components/stocks/assignstocks';
 import Login from './components/login/login';
 import { UserProvider } from './contexts/UserProvider'; 
+import MyProfile from './components/myprofile/myprofile';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path='/' element={<Company />} />
               <Route path='assignStocks/:md' element={<Assignstocks />} />
               <Route path='/login' element={<Login />} />
+              <Route path='/myprofile' element={<MyProfile/>} />
             </Route>
             
           </Routes>

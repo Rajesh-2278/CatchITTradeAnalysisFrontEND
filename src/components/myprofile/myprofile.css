@@ -1,0 +1,23 @@
+.myprofile {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .myprofile h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .profile {
+    font-size: 18px;
+  }
+  
+  .profile p {
+    margin: 10px 0;
+  }
+  
+  .profile strong {
+    color: #333;
+  }

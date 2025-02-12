@@ -13,9 +13,11 @@ const Navbar = () => {
 
       <div className="navbar">
         <div className="nav-links">
-          <Link to='/investors' className="nav-link">My Investments</Link>
+          <Link to='/investors' className="nav-link">MyPortfolio</Link>
           ||
           <Link to='/' className="nav-link">Companies</Link>
+          ||
+          <Link to='/myprofile' className="nav-link">MyProfile</Link>
         </div>
 
         {/* {userDetails.userId ? "UserId : "+userDetails.userId : <Link to='/log' className="nav-link">Login</Link>}  */}
