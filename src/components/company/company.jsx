@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 const Company = () => {
     const [companies, setCompanies] = useState([]);
     const [search, setSearch] = useState("");
-    const [filteredCource, setFilteredCource] = useState(companies);
+    const [filteredCompanies, setFilteredCompanies] = useState(companies);
 
     // Modify the expanded state to track each company individually
     const [expanded, setExpanded] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:9091/company/listAllCompanies").then(
+        axios.get(`${process.env.REACT_APP_API_URL}/company/listAllCompanies`).then(
             (resp) => {
                 setCompanies(resp.data);
                 console.log(resp.data);
@@ -20,10 +20,10 @@ const Company = () => {
     }, []);
 
     useEffect(() => {
-        const newFilter = companies.filter((cour) => {
-            return cour.name.toLowerCase().includes(search.toLowerCase());
+        const newFilter = companies.filter((company) => {
+            return company.name.toLowerCase().includes(search.toLowerCase());
         });
-        setFilteredCource(newFilter);
+        setFilteredCompanies(newFilter);
     }, [search, companies]);
 
     // Toggle function to handle the expansion of individual sections by company ID
@@ -47,7 +47,7 @@ const Company = () => {
                 />
             </div>
             <div className="course-list-container">
-                {filteredCource.map((company) => (
+                {filteredCompanies.map((company) => (
                     <div className="course-box" key={company.id}>
                         {/* Company Name and Stock Info displayed in the row */}
                         <div>

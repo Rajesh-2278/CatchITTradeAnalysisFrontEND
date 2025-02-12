@@ -5,11 +5,11 @@ import Company from './components/company/company';
 import Investor from './components/investor/investor';
 import Assignstocks from './components/stocks/assignstocks';
 import Login from './components/login/login';
-import { UserProvider } from './contexts/UserProvider'; 
+import { InvestorProvider } from './contexts/InvestorProvider'; 
 
 function App() {
   return (
-    <UserProvider>  
+    <InvestorProvider>  
       <Router>
         <div className="App">
           <Routes>
@@ -23,7 +23,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-    </UserProvider>
+    </InvestorProvider>
   );
 }
 
