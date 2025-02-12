@@ -12,11 +12,11 @@ const Assignstocks = () => {
   const navigate=useNavigate()
 
   const { investorDetails } = useContext(InvestorContext);
-  const {md}=useParams();
+  const {md} = useParams();
 
   const assignStocks = () => {
     console.log(md)
-    axios.post("http://localhost:9091/company/assignStocks", null, {
+    axios.post(`${process.env.REACT_APP_API_URL}/company/assignStocks`, null, {
       params: {
         companyId: md,
         investorId: investorDetails.userId,

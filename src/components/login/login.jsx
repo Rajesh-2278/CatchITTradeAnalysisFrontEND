@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { InvestorContext } from '../../contexts/InvestorProvider';  
 import { useNavigate } from 'react-router-dom';
+import './login.css';
 
 const Login = () => {
   const [investorId, setInvestorId] = useState('');

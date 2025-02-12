@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './company.css';
 
 const Company = () => {
     const [companies, setCompanies] = useState([]);
@@ -46,9 +47,9 @@ const Company = () => {
                     placeholder="Search by company name"
                 />
             </div>
-            <div className="course-list-container">
+            <div className="company-list-container">
                 {filteredCompanies.map((company) => (
-                    <div className="course-box" key={company.id}>
+                    <div className="company-box" key={company.id}>
                         {/* Company Name and Stock Info displayed in the row */}
                         <div>
                             <h2>{company.name}</h2>
@@ -93,14 +94,14 @@ const Company = () => {
                             {/* Buy Stocks Button - Green */}
                             <button style={{ backgroundColor: '#28a745', color: 'white' }}>
                                 <Link to={`/assignStocks/${company.id}`} style={{ color: 'white', textDecoration: 'none' }}>
-                                    Buy Stocks
+                                    Buy
                                 </Link>
                             </button>
 
                             {/* Sell Stocks Button - Red */}
                             <button style={{ backgroundColor: '#dc3545', color: 'white' }}>
                                 <Link to={`/sellStocks/${company.id}`} style={{ color: 'white', textDecoration: 'none' }}>
-                                    Sell Stocks
+                                    Sell
                                 </Link>
                             </button>
                         </div>
