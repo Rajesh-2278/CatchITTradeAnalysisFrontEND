@@ -34,9 +34,8 @@ const Assignstocks = () => {
   return (
     <div>
       
-    <center>
+    
       <div>
-      <h2 style={{ color: 'red' }}> Enter number of stocks to buy</h2>
         <div>
         <input
           type="number"
@@ -47,7 +46,7 @@ const Assignstocks = () => {
       <button onClick={assignStocks}>Assign Stocks</button>
       </div>
       {message && <p>{message}</p>}
-      </center>
+      
     </div>
   );
 };

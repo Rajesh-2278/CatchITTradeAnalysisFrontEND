@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
+import Assignstocks from '../stocks/assignstocks';
+import PointsChart from '../../PointsChart';
+import BarChart from '../../charts/barchart';
 import './company.css';
 
 const Company = () => {
     const [companies, setCompanies] = useState([]);
     const [search, setSearch] = useState("");
+
     const [filteredCompanies, setFilteredCompanies] = useState(companies);
 
     // Modify the expanded state to track each company individually
+
     const [expanded, setExpanded] = useState({});
+    const [selectedCompanyId, setSelectedCompanyId] = useState(null); // Track selected company
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/company/listAllCompanies`).then(
@@ -27,7 +34,6 @@ const Company = () => {
         setFilteredCompanies(newFilter);
     }, [search, companies]);
 
-    // Toggle function to handle the expansion of individual sections by company ID
     const toggleSection = (companyId, section) => {
         setExpanded(prevState => ({
             ...prevState,
@@ -36,6 +42,10 @@ const Company = () => {
                 [section]: !prevState[companyId]?.[section]
             }
         }));
+    };
+
+    const handleBuyStocksClick = (companyId) => {
+        setSelectedCompanyId(companyId); // Show the "Buy Stocks" form for the clicked company
     };
 
     return (
@@ -47,28 +57,36 @@ const Company = () => {
                     placeholder="Search by company name"
                 />
             </div>
+
             <div className="company-list-container">
                 {filteredCompanies.map((company) => (
                     <div className="company-box" key={company.id}>
                         {/* Company Name and Stock Info displayed in the row */}
-                        <div>
-                            <h2>{company.name}</h2>
-                            <p>Stock Symbol: {company.symbol}</p>
-                            <h3>Available Stocks: {company.stockCount}</h3>
-                            <p>Stock Price: ₹{company.stockPrice} 100</p>
+                       <div className="company-info">
+                            <div className="company-details">
+                                <h2>{company.name}</h2>
+                                <p>Stock Symbol: {company.symbol}</p>
+                                <h3>Available Stocks: {company.stockCount}</h3>
+                                <p>Stock Price: ₹{company.stockPrice} 100</p>
+                            </div>
+
+                            {/* Financials Table on the top right */}
+                            <div className="financials">
+                                <h4>Financials</h4>
+                                <PointsChart value={company.id}/>
+                                <BarChart valuee={company.id}/>
+                            </div>
                         </div>
-                        
+
                         {/* About Company button and info */}
                         <div>
                             <button onClick={() => toggleSection(company.id, 'about')}>
                                 About Company
                             </button>
-
-                            {/* Show About Company Data only if 'about' is expanded for this company */}
                             {expanded[company.id]?.about && (
                                 <div className="about-company-info">
                                     <h4>About Company</h4>
-                                    <p><strong>CEO:</strong> {company.ceo}</p>
+                                    <p><strong>CEO:</strong> {company.name}</p>
                                     <p><strong>Founded Year:</strong> {company.foundedYear}</p>
                                 </div>
                             )}
@@ -79,26 +97,34 @@ const Company = () => {
                             <button onClick={() => toggleSection(company.id, 'performance')}>
                                 Performance
                             </button>
-
-                            {/* Conditionally render Performance info below About Company */}
                             {expanded[company.id]?.performance && (
                                 <div className="additional-info">
                                     <h4>Performance</h4>
-                                    <p><strong>Profit: </strong> 80% </p> {/* Example profit */}
+                                    <p><strong>Profit: </strong> 80% </p>
                                 </div>
                             )}
                         </div>
 
-                        {/* Buy and Sell Stocks Buttons with custom colors */}
+                        {/* Buy Stocks Button */}
                         <div>
-                            {/* Buy Stocks Button - Green */}
-                            <button style={{ backgroundColor: '#28a745', color: 'white' }}>
-                                <Link to={`/assignStocks/${company.id}`} style={{ color: 'white', textDecoration: 'none' }}>
-                                    Buy
-                                </Link>
+
+                            <button style={{ backgroundColor: '#28a745', color: 'white' }} 
+                                    onClick={() => handleBuyStocksClick(company.id)}>
+                                Buy 
+                           
                             </button>
 
-                            {/* Sell Stocks Button - Red */}
+                            {/* Show Assign Stocks form below if this company is selected */}
+                            {selectedCompanyId === company.id && (
+                                <div>
+                                    <h2 style={{ color: 'red' }}>Enter number of stocks to buy</h2>
+                                    <Assignstocks companyId={company.id} />
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Sell Stocks Button */}
+                        <div>
                             <button style={{ backgroundColor: '#dc3545', color: 'white' }}>
                                 <Link to={`/sellStocks/${company.id}`} style={{ color: 'white', textDecoration: 'none' }}>
                                     Sell
