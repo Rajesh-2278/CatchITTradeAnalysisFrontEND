@@ -133,3 +133,35 @@ input[type="search"] {
   text-align: center;
   margin: 20px 0;
 }
+.company-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.company-details {
+  width: 60%;
+}
+
+.financials {
+  width: 30%;
+  text-align: right;
+  padding-left: 20px;
+}
+
+.financials table {
+  margin-top: 10px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.financials table td {
+  padding: 5px;
+}
+
+.financials h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
