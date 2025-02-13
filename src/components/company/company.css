@@ -1,0 +1,72 @@
+/* Center the search box */
+.center-search {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Additional section for About Company and Performance */
+.additional-info {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Search input box */
+input[type="search"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styling for the About and Performance buttons */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px 0px;
+}
+  
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Container for all companies - now in a column format */
+.company-list-container {
+    width: 90vw;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for each row of company */
+.company-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* To align items horizontally */
+  background-color: #e6f4f4;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 15px;
+  cursor: pointer;
+  width: 45vw;
+  margin: 10px 0px;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+/* Hover effect for each row */
+.company-box:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+  

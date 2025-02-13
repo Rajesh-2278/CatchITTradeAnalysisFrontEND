@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
 import Assignstocks from '../stocks/assignstocks';
 import PointsChart from '../../PointsChart';
 import BarChart from '../../charts/barchart';
+import './company.css';
 
 const Company = () => {
     const [companies, setCompanies] = useState([]);
     const [search, setSearch] = useState("");
-    const [filteredCource, setFilteredCource] = useState(companies);
+
+    const [filteredCompanies, setFilteredCompanies] = useState(companies);
+
+    // Modify the expanded state to track each company individually
+
     const [expanded, setExpanded] = useState({});
     const [selectedCompanyId, setSelectedCompanyId] = useState(null); // Track selected company
 
     useEffect(() => {
-        axios.get("http://localhost:9091/company/listAllCompanies").then(
+        axios.get(`${process.env.REACT_APP_API_URL}/company/listAllCompanies`).then(
             (resp) => {
                 setCompanies(resp.data);
                 console.log(resp.data);
@@ -22,10 +28,10 @@ const Company = () => {
     }, []);
 
     useEffect(() => {
-        const newFilter = companies.filter((cour) => {
-            return cour.name.toLowerCase().includes(search.toLowerCase());
+        const newFilter = companies.filter((company) => {
+            return company.name.toLowerCase().includes(search.toLowerCase());
         });
-        setFilteredCource(newFilter);
+        setFilteredCompanies(newFilter);
     }, [search, companies]);
 
     const toggleSection = (companyId, section) => {
@@ -51,10 +57,12 @@ const Company = () => {
                     placeholder="Search by company name"
                 />
             </div>
-            <div className="course-list-container">
-                {filteredCource.map((company) => (
-                    <div className="course-box" key={company.id}>
-                        <div className="company-info">
+
+            <div className="company-list-container">
+                {filteredCompanies.map((company) => (
+                    <div className="company-box" key={company.id}>
+                        {/* Company Name and Stock Info displayed in the row */}
+                       <div className="company-info">
                             <div className="company-details">
                                 <h2>{company.name}</h2>
                                 <p>Stock Symbol: {company.symbol}</p>
@@ -99,9 +107,11 @@ const Company = () => {
 
                         {/* Buy Stocks Button */}
                         <div>
+
                             <button style={{ backgroundColor: '#28a745', color: 'white' }} 
                                     onClick={() => handleBuyStocksClick(company.id)}>
-                                Buy Stocks
+                                Buy 
+                           
                             </button>
 
                             {/* Show Assign Stocks form below if this company is selected */}
@@ -117,7 +127,7 @@ const Company = () => {
                         <div>
                             <button style={{ backgroundColor: '#dc3545', color: 'white' }}>
                                 <Link to={`/sellStocks/${company.id}`} style={{ color: 'white', textDecoration: 'none' }}>
-                                    Sell Stocks
+                                    Sell
                                 </Link>
                             </button>
                         </div>

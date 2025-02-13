@@ -1,27 +1,28 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { UserContext } from '../../contexts/UserProvider';
+import { InvestorContext } from '../../contexts/InvestorProvider';
+import './investor.css';
 
 const Investor = () => {
   const [data, setData] = useState([]);
-  const { userDetails } = useContext(UserContext);  // Access userDetails from context
+  const { investorDetails } = useContext(InvestorContext);  // Access investorDetails from context
   
   useEffect(() => {
     
-    if (userDetails && userDetails.userId) {
-      axios.get(`http://localhost:9091/investor/getCompaniesByInvestorId/${userDetails.userId}`)
+    if (investorDetails && investorDetails.userId) {
+      axios.get(`${process.env.REACT_APP_API_URL}/investor/getCompaniesByInvestorId/${investorDetails.userId}`)
         .then((resp) => setData(resp.data))
         .catch((error) => console.error("Error fetching data:", error));
     }
-  }, [userDetails.userId]); 
+  }, [investorDetails.userId]); 
 
   return (
-    <div className='course-list-container'>
+    <div className='investor-container'>
       {
-        data.map((e) => (
-          <div className='course-box' key={e.id}>
-              <h2 style={{ color: 'green' }}> {e.name}</h2>
-              <h3 style={{ color: 'green' }}> Invested- {e.stockCount} </h3>
+        data.map((company) => (
+          <div className='investor-box' key={company.id}>
+              <h2 style={{ color: 'green' }}> {company.name}</h2>
+              <h3 style={{ color: 'green' }}> Invested - {company.stockCount} </h3>
           </div>
         ))
       }

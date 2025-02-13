@@ -1,21 +1,30 @@
-import React, { useState, useContext } from 'react';
-import { UserContext } from '../../contexts/UserProvider';  
+import React, { useState, useContext, useEffect } from 'react';
+import { InvestorContext } from '../../contexts/InvestorProvider';  
 import { useNavigate } from 'react-router-dom';
+import './login.css';
 
 const Login = () => {
-  const [inputUserId, setInputUserId] = useState("");  
-  const [inputUsername, setInputUsername] = useState(""); 
-  const { setUserDetails } = useContext(UserContext);  
+  const [investorId, setInvestorId] = useState('');
+  const [investorUsername, setInvestorUsername] = useState('');
+  const { setInvestorDetails, investorDetails } = useContext(InvestorContext);
+
   const navigate = useNavigate(); 
+
   const handleLogin = () => {
-   
-    if (inputUserId && inputUsername) {
-      setUserDetails({ userId: inputUserId, username: inputUsername });  
+
+    if (investorId && investorUsername) {
+      setInvestorDetails({ userId: investorId, username: investorUsername });  
+      console.log("InvestorId: " + investorId + " InvestorUsername: " + investorUsername);
+      console.log("InvestorDetails: " + investorDetails.userId + " " + investorDetails.username);
       navigate("/");  
     } else {
-      alert("Please enter both userId and username!");  
+      alert("Please enter both Investor userId and username!");
     }
-  };
+  }
+
+  useEffect(() => {
+    console.log("InvestorDetails updated: ", investorDetails.userId, investorDetails.username);
+  }, [investorDetails]);
 
   return (
     
@@ -24,14 +33,14 @@ const Login = () => {
       <h2>Login</h2>
       <input 
         type="number" 
-        value={inputUserId} 
-        onChange={(e) => setInputUserId(e.target.value)}  
+        value={investorId} 
+        onChange={(e) => setInvestorId(e.target.value)}  
         placeholder="Enter your userId" 
       /><br />
       <input 
         type="text" 
-        value={inputUsername} 
-        onChange={(e) => setInputUsername(e.target.value)}  
+        value={investorUsername} 
+        onChange={(e) => setInvestorUsername(e.target.value)}  
         placeholder="Enter your username" 
       /> <br />
       <button onClick={handleLogin}>Login</button>
