@@ -118,7 +118,7 @@ const Company = () => {
                             {selectedCompanyId === company.id && (
                                 <div>
                                     <h2 style={{ color: 'red' }}>Enter number of stocks to buy</h2>
-                                    <Assignstocks companyId={company.id} />
+                                    <Assignstocks md={company.id} />
                                 </div>
                             )}
                         </div>

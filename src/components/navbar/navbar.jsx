@@ -18,6 +18,7 @@ const Navbar = () => {
       <div className="navbar">
         <div className="nav-links">
           <Link to='/investors' className="nav-link">My Investments</Link>
+          <Link to='/history' className="nav-link">My History</Link>
           <Link to='/' className="nav-link">Companies</Link>
         </div>
 

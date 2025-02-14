@@ -52,7 +52,7 @@ const PointsChart = ({value}) => {
           <Chart
             series={[
               {
-                name: "People Born",
+                name: "Stock Price",
                 data: chartData.yaxis, // yaxis data fetched from the backend
               },
             ]}

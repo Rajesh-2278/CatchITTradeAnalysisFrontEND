@@ -6,6 +6,7 @@ import Investor from './components/investor/investor';
 import Assignstocks from './components/stocks/assignstocks';
 import Login from './components/login/login';
 import { InvestorProvider } from './contexts/InvestorProvider'; 
+import Historyy from './components/hostory/history';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Navbar />}>
               <Route path='investors' element={<Investor />} />
+              <Route path='history' element={<Historyy />} />
               <Route path='/' element={<Company />} />
               <Route path='assignStocks/:md' element={<Assignstocks />} />
               <Route path='/login' element={<Login />} />

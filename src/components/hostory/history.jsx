@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { InvestorContext } from '../../contexts/InvestorProvider';
-import './investor.css';
+// import './investor.css';
 
-const Investor = () => {
+const Historyy = () => {
   const [data, setData] = useState([]);
   const { investorDetails } = useContext(InvestorContext);  // Access investorDetails from context
   
@@ -11,7 +11,7 @@ const Investor = () => {
     // Function to fetch data from the API
     const fetchData = () => {
       if (investorDetails && investorDetails.userId) {
-        axios.get(`${process.env.REACT_APP_API_URL}/investor/getCompaniesByInvestorId/${investorDetails.userId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/investor/getUserHistoryByInvestorId/${investorDetails.userId}`)
           .then((resp) => setData(resp.data))
           .catch((error) => console.error("Error fetching data:", error));
       }
@@ -34,9 +34,10 @@ const Investor = () => {
         data.map((company) => (
           <div className='investor-box' key={company.id}>
               <h2 style={{ color: 'green' }}> {company.name}</h2>
-              <h3 style={{ color: 'green' }}> Invested - {company.stockCount} </h3>
-              <h3 style={{ color: 'green' }}> totalInvestedMoney - {company.totalInvestedMoney} </h3>
-              <h3 style={{ color: 'green' }}> If you sell now - {company.stockPrice}</h3>
+              <h3 style={{ color: 'green' }}> Purchased Date and Time - {company.dateTime} </h3>
+              <h3 style={{ color: 'green' }}> Compny name - {company.companyName} </h3>
+              <h3 style={{ color: 'green' }}> Stocks- {company.stockCount}</h3>
+              <h3 style={{ color: 'green' }}> MoneySpent - {company.moneySpent}</h3>
           </div>
         ))
       }
@@ -45,4 +46,4 @@ const Investor = () => {
   )
 }
 
-export default Investor;
+export default Historyy;
