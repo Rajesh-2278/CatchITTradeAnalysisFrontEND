@@ -1,23 +1,50 @@
 .myprofile {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .myprofile h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .profile {
-    font-size: 18px;
-  }
-  
-  .profile p {
-    margin: 10px 0;
-  }
-  
-  .profile strong {
-    color: #333;
-  }
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.myprofile h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-table {
+  width: 50%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.profile-table th, .profile-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.profile-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.profile-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.profile-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.profile-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.profile-table td:first-child {
+  font-weight: bold;
+  width: 30%;
+}
+
+.profile-table td:last-child {
+  width: 70%;
+}

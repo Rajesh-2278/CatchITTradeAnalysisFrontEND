@@ -7,6 +7,8 @@ import Assignstocks from './components/stocks/assignstocks';
 import Login from './components/login/login';
 import { UserProvider } from './contexts/UserProvider'; 
 import MyProfile from './components/myprofile/myprofile';
+import Register from './components/register/register';
+import ValidateKYC from './components/kyc/validateKYC';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
               <Route path='assignStocks/:md' element={<Assignstocks />} />
               <Route path='/login' element={<Login />} />
               <Route path='/myprofile' element={<MyProfile/>} />
+              <Route path='/register' element={<Register/>} />
+              <Route path='/validateInvestor/:id' element={<ValidateKYC/>} />
             </Route>
             
           </Routes>
