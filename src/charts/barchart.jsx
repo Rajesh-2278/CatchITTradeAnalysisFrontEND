@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Chart from "react-apexcharts";
 
-const BarChart = ({valuee}) => {
+const BarChart = ({ valuee }) => {
   const [revenueData, setRevenueData] = useState({
     xaxis: [],
     yaxis: [],
@@ -17,23 +17,22 @@ const BarChart = ({valuee}) => {
     yaxis: [],
   });
 
-  const [selectedCategory, setSelectedCategory] = useState("revenue");
+  const [selectedCategory, setSelectedCategory] = useState(null); // Start with null so no chart is displayed initially
+  const [showCategoryButtons, setShowCategoryButtons] = useState(false);
 
   // Function to fetch data for each category
   const fetchData = (category) => {
     let url = "";
-    
+
     switch (category) {
       case "revenue":
-        url = 'http://localhost:9091/revenue/'+valuee; // Replace with your actual endpoint
-        console.log("Rajesh")
-      console.log(valuee)
+        url = 'http://localhost:9091/revenue/' + valuee; // Replace with your actual endpoint
         break;
       case "NW":
-        url = 'http://localhost:9091/netWorth/'+valuee; // Replace with your actual endpoint
+        url = 'http://localhost:9091/netWorth/' + valuee; // Replace with your actual endpoint
         break;
       case "PR":
-        url = 'http://localhost:9091/profit/'+valuee; // Replace with your actual endpoint
+        url = 'http://localhost:9091/profit/' + valuee; // Replace with your actual endpoint
         break;
       default:
         return;
@@ -42,8 +41,6 @@ const BarChart = ({valuee}) => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log('Fetched Data:', data); // Debugging output
-
         if (data && data.xaxis && data.yaxis) {
           switch (category) {
             case "revenue":
@@ -79,12 +76,21 @@ const BarChart = ({valuee}) => {
     fetchData(category); // Fetch data for the selected category
   };
 
+  const handleAboutClick = () => {
+    setShowCategoryButtons(!showCategoryButtons); // Toggle the visibility of the category buttons
+    if (showCategoryButtons) {
+      setSelectedCategory(null); // Reset the chart when hiding the category buttons
+    }
+  };
+
   // Fetch the default "revenue" data when the component mounts
   useEffect(() => {
-    fetchData("revenue"); // Automatically fetch revenue data on initial load
-  }, []);
+    if (selectedCategory) {
+      fetchData(selectedCategory); // Automatically fetch data when a category is selected
+    }
+  }, [selectedCategory]); // Only run when the selectedCategory changes
 
- 
+  // Determine which data to use based on the selected category
   const dataToDisplay =
     selectedCategory === "revenue"
       ? revenueData
@@ -94,16 +100,23 @@ const BarChart = ({valuee}) => {
 
   return (
     <div className="App">
-      <h3>Financials</h3> 
+      <h3>Financials</h3>
 
-      {/* Category Buttons (Revenue, NW, PR) shown automatically */}
+      {/* ABOUTT Button */}
       <div>
-        <button onClick={() => handleCategoryClick("revenue")}>Revenue</button>
-        <button onClick={() => handleCategoryClick("NW")}>NW</button>
-        <button onClick={() => handleCategoryClick("PR")}>PR</button>
+        <button onClick={handleAboutClick}>ABOUTT</button>
       </div>
 
-      {/* Render Bar Chart for the selected category */}
+      {/* Conditionally render the Category Buttons (Revenue, NW, PR) */}
+      {showCategoryButtons && (
+        <div>
+          <button onClick={() => handleCategoryClick("revenue")}>Revenue</button>
+          <button onClick={() => handleCategoryClick("NW")}>NW</button>
+          <button onClick={() => handleCategoryClick("PR")}>PR</button>
+        </div>
+      )}
+
+      {/* Only render the chart if a category is selected */}
       {selectedCategory && (
         <div className="row">
           <div className="col-4">

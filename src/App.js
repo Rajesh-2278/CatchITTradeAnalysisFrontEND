@@ -8,6 +8,8 @@ import Login from './components/login/login';
 import { InvestorProvider } from './contexts/InvestorProvider'; 
 import Historyy from './components/hostory/history';
 import Sell from './components/sell/sell';
+import Registration from './components/registration/registration';
+import KycStatuss from './components/kycstatus/kycstatus';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Navbar />}>
               <Route path='investors' element={<Investor />} />
+              <Route path='registration' element={<Registration />} />
+              <Route path='kycstatus' element={<KycStatuss />} />
               <Route path='history' element={<Historyy />} />
               <Route path='/' element={<Company />} />
               <Route path='assignStocks/:md' element={<Assignstocks />} />

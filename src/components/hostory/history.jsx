@@ -1,12 +1,11 @@
-import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import { InvestorContext } from '../../contexts/InvestorProvider';
-// import './investor.css';
 
 const Historyy = () => {
   const [data, setData] = useState([]);
   const { investorDetails } = useContext(InvestorContext);  // Access investorDetails from context
-  
+
   useEffect(() => {
     // Function to fetch data from the API
     const fetchData = () => {
@@ -31,19 +30,21 @@ const Historyy = () => {
   return (
     <div className='investor-container'>
       {
-        data.map((company) => (
-          <div className='investor-box' key={company.id}>
-              <h2 style={{ color: 'green' }}> {company.name}</h2>
-              <h3 style={{ color: 'green' }}> Purchased Date and Time - {company.dateTime} </h3>
-              <h3 style={{ color: 'green' }}> Compny name - {company.companyName} </h3>
-              <h3 style={{ color: 'green' }}> Stocks- {company.stockCount}</h3>
-              <h3 style={{ color: 'green' }}> MoneySpent - {company.moneySpent}</h3>
-          </div>
-        ))
+        data.map((company) => {
+          const color = company.color || 'green';  // Default to green if no color is specified in the data
+          return (
+            <div className='investor-box' key={company.id}>
+              <h2 style={{ color: color }}> {company.name}</h2>
+              <h3 style={{ color: color }}> Purchased Date and Time - {company.dateTime} </h3>
+              <h3 style={{ color: color }}> Company name - {company.companyName} </h3>
+              <h3 style={{ color: color }}> Stocks- {company.stockCount}</h3>
+              <h3 style={{ color: color }}> MoneySpent - {company.moneySpent}</h3>
+            </div>
+          );
+        })
       }
-
     </div>
-  )
+  );
 }
 
 export default Historyy;
