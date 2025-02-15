@@ -67,7 +67,7 @@ const Company = () => {
                                 <h2>{company.name}</h2>
                                 <p>Stock Symbol: {company.symbol}</p>
                                 <h3>Available Stocks: {company.stockCount}</h3>
-                                <p>Stock Price: ₹{company.stockPrice} 100</p>
+                                <p>Stock Price: ₹{company.stockPrice} </p>
                             </div>
 
                             {/* Financials Table on the top right */}
@@ -117,20 +117,15 @@ const Company = () => {
                             {/* Show Assign Stocks form below if this company is selected */}
                             {selectedCompanyId === company.id && (
                                 <div>
-                                    <h2 style={{ color: 'red' }}>Enter number of stocks to buy</h2>
-                                    <Assignstocks md={company.id} />
+                                    <h3 style={{ color: 'red' }}> No of stocks</h3>
+                                    <Assignstocks md={company.id} stockPrice={company.stockPrice} />
                                 </div>
+
                             )}
                         </div>
 
                         {/* Sell Stocks Button */}
-                        <div>
-                            <button style={{ backgroundColor: '#dc3545', color: 'white' }}>
-                                <Link to={`/sellStocks/${company.id}`} style={{ color: 'white', textDecoration: 'none' }}>
-                                    Sell
-                                </Link>
-                            </button>
-                        </div>
+                        
                     </div>
                 ))}
             </div>

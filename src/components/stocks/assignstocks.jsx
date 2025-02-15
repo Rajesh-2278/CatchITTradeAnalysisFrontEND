@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { InvestorContext } from '../../contexts/InvestorProvider'; 
 
-const Assignstocks = ({md}) => {
+const Assignstocks = ({md,stockPrice}) => {
   // const [companyId, setCompanyId] = useState('');
   //const [investorId, setInvestorId] = useState('');
   const [stocksToAssign, setStocksToAssign] = useState('');
@@ -28,7 +28,7 @@ const Assignstocks = ({md}) => {
       setMessage("Error assigning stocks!");
     });
 
-    navigate("/")
+    navigate("/investors")
   };
 
   return (
@@ -42,7 +42,9 @@ const Assignstocks = ({md}) => {
           value={stocksToAssign}
           onChange={(e) => setStocksToAssign(e.target.value)}
         />
+        Money Require : ₹{stocksToAssign *stockPrice} 
       </div>
+      
       <button onClick={assignStocks}>Assign Stocks</button>
       </div>
       {message && <p>{message}</p>}

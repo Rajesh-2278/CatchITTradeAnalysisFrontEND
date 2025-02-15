@@ -94,7 +94,7 @@ const BarChart = ({valuee}) => {
 
   return (
     <div className="App">
-      <h1>React Charts Demo</h1>
+      <h3>Financials</h3> 
 
       {/* Category Buttons (Revenue, NW, PR) shown automatically */}
       <div>
