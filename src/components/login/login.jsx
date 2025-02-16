@@ -1,50 +1,43 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { InvestorContext } from '../../contexts/InvestorProvider';  
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
 const Login = () => {
-  const [investorId, setInvestorId] = useState('');
-  const [investorUsername, setInvestorUsername] = useState('');
-  const { setInvestorDetails, investorDetails } = useContext(InvestorContext);
-
+  const [inputUserId, setInputUserId] = useState("");  
+  const [inputUsername, setInputUsername] = useState(""); 
+  const { setInvestorDetails } = useContext(InvestorContext);  
   const navigate = useNavigate(); 
 
   const handleLogin = () => {
-
-    if (investorId && investorUsername) {
-      setInvestorDetails({ userId: investorId, username: investorUsername });  
-      console.log("InvestorId: " + investorId + " InvestorUsername: " + investorUsername);
-      console.log("InvestorDetails: " + investorDetails.userId + " " + investorDetails.username);
+    if (inputUserId && inputUsername) {
+      setInvestorDetails({ userId: inputUserId, username: inputUsername });  
       navigate("/");  
     } else {
-      alert("Please enter both Investor userId and username!");
+      alert("Please enter both userId and username!");  
     }
-  }
-
-  useEffect(() => {
-    console.log("InvestorDetails updated: ", investorDetails.userId, investorDetails.username);
-  }, [investorDetails]);
+  };
 
   return (
-    
-    <div>
-      <center>
-      <h2>Login</h2>
-      <input 
-        type="number" 
-        value={investorId} 
-        onChange={(e) => setInvestorId(e.target.value)}  
-        placeholder="Enter your userId" 
-      /><br />
-      <input 
-        type="text" 
-        value={investorUsername} 
-        onChange={(e) => setInvestorUsername(e.target.value)}  
-        placeholder="Enter your username" 
-      /> <br />
-      <button onClick={handleLogin}>Login</button>
-      </center>
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Login</h2>
+        <input 
+          type="number" 
+          value={inputUserId} 
+          onChange={(e) => setInputUserId(e.target.value)}  
+          placeholder="Enter your userId" 
+          className="login-input"
+        /><br />
+        <input 
+          type="text" 
+          value={inputUsername} 
+          onChange={(e) => setInputUsername(e.target.value)}  
+          placeholder="Enter your username" 
+          className="login-input"
+        /> <br />
+        <button onClick={handleLogin} className="login-button">Login</button>
+      </div>
     </div>
   );
 };
