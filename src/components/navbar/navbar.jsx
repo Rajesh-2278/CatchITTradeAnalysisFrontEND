@@ -24,7 +24,8 @@ const Navbar = () => {
 
         {/* {userDetails.userId ? "UserId : "+userDetails.userId : <Link to='/log' className="nav-link">Login</Link>}  */}
         {investorDetails.userId ? <Link to='/history' className="nav-link">My History</Link> : ""}
-        {investorDetails.userId ? <Link to='/investors' className="nav-link">My InvestMents</Link> : ""}
+        {investorDetails.userId ? <Link to='/investors' className="nav-link">My Investments</Link> : ""}
+        {investorDetails.userId ? <Link to='/myprofile' className="nav-link">My Profile</Link> : ""}
         {investorDetails.username ? "Hello  " + investorDetails.username : ''}
         {investorDetails.userId ? <button onClick={handleLogout}>Logout</button> : <Link to='/login' className="nav-link">Login</Link>}
        
