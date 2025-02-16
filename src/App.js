@@ -10,6 +10,9 @@ import Historyy from './components/hostory/history';
 import Sell from './components/sell/sell';
 import Registration from './components/registration/registration';
 import KycStatuss from './components/kycstatus/kycstatus';
+import MyProfile from './components/myprofile/myprofile';
+import UpdateProfile from './components/updateprofile/updateprofile';
+
 
 function App() {
   return (
@@ -25,7 +28,11 @@ function App() {
               <Route path='/' element={<Company />} />
               <Route path='assignStocks/:md' element={<Assignstocks />} />
               <Route path='sellStocks/:md' element={<Sell />} />
+              <Route path='/myprofile' element={<MyProfile/>} />
+              <Route path="/updateprofile" element={<UpdateProfile/>} />
               <Route path='/login' element={<Login />} />
+              
+
             </Route>
             
           </Routes>
