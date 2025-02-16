@@ -5,14 +5,14 @@ import Company from './components/company/company';
 import Investor from './components/investor/investor';
 import Assignstocks from './components/stocks/assignstocks';
 import Login from './components/login/login';
-import { UserProvider } from './contexts/UserProvider'; 
+import { InvestorProvider } from './contexts/InvestorProvider'; 
 import MyProfile from './components/myprofile/myprofile';
 import Register from './components/register/register';
 import ValidateKYC from './components/kyc/validateKYC';
 
 function App() {
   return (
-    <UserProvider>  
+    <InvestorProvider>  
       <Router>
         <div className="App">
           <Routes>
@@ -29,7 +29,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-    </UserProvider>
+    </InvestorProvider>
   );
 }
 

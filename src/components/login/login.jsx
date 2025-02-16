@@ -1,17 +1,17 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from '../../contexts/UserProvider';  
+import { InvestorContext } from '../../contexts/InvestorProvider';  
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
 const Login = () => {
   const [inputUserId, setInputUserId] = useState("");  
   const [inputUsername, setInputUsername] = useState(""); 
-  const { setUserDetails } = useContext(UserContext);  
+  const { setInvestorDetails } = useContext(InvestorContext);  
   const navigate = useNavigate(); 
 
   const handleLogin = () => {
     if (inputUserId && inputUsername) {
-      setUserDetails({ userId: inputUserId, username: inputUsername });  
+      setInvestorDetails({ userId: inputUserId, username: inputUsername });  
       navigate("/");  
     } else {
       alert("Please enter both userId and username!");  

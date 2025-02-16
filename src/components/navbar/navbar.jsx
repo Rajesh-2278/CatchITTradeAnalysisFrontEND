@@ -1,9 +1,9 @@
 import React, { Fragment, useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { UserContext } from '../../contexts/UserProvider';
+import { InvestorContext } from '../../contexts/InvestorProvider';
 
 const Navbar = () => {
-  const { userDetails, setUserDetails } = useContext(UserContext);
+  const { userDetails, setUserDetails } = useContext(InvestorContext);
 
   const logout = () => {
     setUserDetails({ userId: null, username: null });
@@ -16,7 +16,7 @@ const Navbar = () => {
           <Link to='/investors' className="nav-link">MyPortfolio</Link>
           ||
           <Link to='/' className="nav-link">Companies</Link>
-          {userDetails.userId && (
+          {userDetails && userDetails.userId && (
             <>
               ||
               <Link to='/myprofile' className="nav-link">MyProfile</Link>
@@ -24,7 +24,7 @@ const Navbar = () => {
           )}
         </div>
         <div className="auth-links">
-          {userDetails.userId ? (
+          {userDetails && userDetails.userId ? (
             <button onClick={logout}>Logout</button>
           ) : (
             <>
@@ -33,7 +33,7 @@ const Navbar = () => {
               <Link to='/register' className="nav-link">Register</Link>
             </>
           )}
-          {/* {userDetails.username ? "Hello  " + userDetails.username : ''} */}
+          {/* {userDetails && userDetails.username ? "Hello  " + userDetails.username : ''} */}
         </div>
       </div>
       <Outlet />

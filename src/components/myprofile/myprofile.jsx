@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
-import { UserContext } from '../../contexts/UserProvider';
+import { InvestorContext } from '../../contexts/InvestorProvider';
 import "./myprofile.css";
 import axios from 'axios'
 
 const MyProfile = () => {
     const [investorDetails, setData] = useState([]);
-    const { userDetails } = useContext(UserContext);
+    const { userDetails } = useContext(InvestorContext);
 
     useEffect(() => {
         if (userDetails && userDetails.userId) {
