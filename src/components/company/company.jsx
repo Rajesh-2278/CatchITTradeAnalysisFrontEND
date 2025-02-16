@@ -6,6 +6,7 @@ import Assignstocks from '../stocks/assignstocks';
 import PointsChart from '../../PointsChart';
 import BarChart from '../../charts/barchart';
 import './company.css';
+import { CompanyDescription } from './companyDescription';
 
 const Company = () => {
     const [companies, setCompanies] = useState([]);
@@ -51,9 +52,9 @@ const Company = () => {
     return (
         <div>
             <div className="center-search">
-                Search Companies: <input 
-                    type="search" 
-                    onChange={(e) => setSearch(e.target.value)} 
+                Search Companies: <input
+                    type="search"
+                    onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search by company name"
                 />
             </div>
@@ -62,10 +63,10 @@ const Company = () => {
                 {filteredCompanies.map((company) => (
                     <div className="company-box" key={company.id}>
                         {/* Company Name and Stock Info displayed in the row */}
-                       <div className="company-info">
+                        <div className="company-info">
                             <div className="company-details">
                                 <h2>{company.name}</h2>
-                                <p>Stock Symbol: {company.symbol}</p>
+                                <p>Stock Symbol: {company.tickerSymbol}</p>
                                 <h3>Available Stocks: {company.stockCount}</h3>
                                 <p>Stock Price: ₹{company.stockPrice} </p>
                             </div>
@@ -73,8 +74,8 @@ const Company = () => {
                             {/* Financials Table on the top right */}
                             <div className="financials">
                                 <h4>Financials</h4>
-                                <PointsChart value={company.id}/>
-                                <BarChart valuee={company.id}/>
+                                <PointsChart value={company.id} />
+                                <BarChart valuee={company.id} />
                             </div>
                         </div>
 
@@ -85,14 +86,20 @@ const Company = () => {
                             </button>
                             {expanded[company.id]?.about && (
                                 <div className="about-company-info">
-                                    <h4>About Company</h4>
-                                    <p><strong>CEO:</strong> {company.name}</p>
-                                    <p><strong>Founded Year:</strong> {company.foundedYear}</p>
+
+                                    <p><strong>sector :</strong> {company.sector}</p>
+                                    <p><strong>address :</strong> {company.address}</p>
+                                    <p><strong>country :</strong> {company.country}</p>
+                                    <p><strong>OfficialSite :</strong><a href={company.officialSite} target="_blank" >{company.officialSite}</a></p>
+                                    {/* <p><strong>description :</strong> {company.description}</p> */}
+                                    <div>
+                                        <CompanyDescription description={company.description} />
+                                    </div>
                                 </div>
                             )}
                         </div>
 
-                        {/* Performance button and info */}
+                        {/* Performance button and info ////*/}
                         <div>
                             <button onClick={() => toggleSection(company.id, 'performance')}>
                                 Performance
@@ -108,10 +115,10 @@ const Company = () => {
                         {/* Buy Stocks Button */}
                         <div>
 
-                            <button style={{ backgroundColor: '#28a745', color: 'white' }} 
-                                    onClick={() => handleBuyStocksClick(company.id)}>
-                                Buy 
-                           
+                            <button style={{ backgroundColor: '#28a745', color: 'white' }}
+                                onClick={() => handleBuyStocksClick(company.id)}>
+                                Buy
+
                             </button>
 
                             {/* Show Assign Stocks form below if this company is selected */}
@@ -125,7 +132,7 @@ const Company = () => {
                         </div>
 
                         {/* Sell Stocks Button */}
-                        
+
                     </div>
                 ))}
             </div>

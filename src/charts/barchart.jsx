@@ -110,9 +110,9 @@ const BarChart = ({ valuee }) => {
       {/* Conditionally render the Category Buttons (Revenue, NW, PR) */}
       {showCategoryButtons && (
         <div>
-          <button onClick={() => handleCategoryClick("revenue")}>Revenue</button>
-          <button onClick={() => handleCategoryClick("NW")}>NW</button>
-          <button onClick={() => handleCategoryClick("PR")}>PR</button>
+          <button onClick={() => handleCategoryClick("revenue")}>REVENUE</button>
+          <button onClick={() => handleCategoryClick("NW")}>NETWORTH</button>
+          <button onClick={() => handleCategoryClick("PR")}>PROFIT</button>
         </div>
       )}
 
