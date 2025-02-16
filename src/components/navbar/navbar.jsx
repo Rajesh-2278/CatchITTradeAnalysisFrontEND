@@ -16,15 +16,15 @@ const Navbar = () => {
     <Fragment>
 
       <div className="navbar">
-        <div className="nav-links">
-          {/* <Link to='/investors' className="nav-link">My Investments</Link> */}
-          {/* <Link to='/history' className="nav-link">My History</Link> */}
-          <Link to='/' className="nav-link">Companies</Link>
-        </div>
+        
 
         {/* {userDetails.userId ? "UserId : "+userDetails.userId : <Link to='/log' className="nav-link">Login</Link>}  */}
         {investorDetails.userId ? <Link to='/history' className="nav-link">My History</Link> : ""}
         {investorDetails.userId ? <Link to='/investors' className="nav-link">My InvestMents</Link> : ""}
+        <div className="nav-links">
+         
+          <Link to='/' className="nav-link">Companies</Link>
+        </div>
         {investorDetails.username ? "Hello  " + investorDetails.username : ''}
         {investorDetails.userId ? <button onClick={handleLogout}>Logout</button> : <Link to='/login' className="nav-link">Login</Link>}
        

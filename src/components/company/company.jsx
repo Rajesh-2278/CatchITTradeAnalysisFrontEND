@@ -86,8 +86,10 @@ const Company = () => {
                             {expanded[company.id]?.about && (
                                 <div className="about-company-info">
                                     <h4>About Company</h4>
-                                    <p><strong>CEO:</strong> {company.name}</p>
-                                    <p><strong>Founded Year:</strong> {company.foundedYear}</p>
+                                    <p><strong>sector:</strong> {company.sector}</p>
+                                    <p><strong>address:</strong> {company.address}</p>
+                                    <p><strong>country</strong> {company.country}</p>
+                                    <p><strong>description</strong> {company.description}</p>
                                 </div>
                             )}
                         </div>

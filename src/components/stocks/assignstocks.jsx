@@ -27,7 +27,12 @@ const Assignstocks = ({ md, stockPrice }) => {
       alert("KYC status is pending. Please complete your KYC.");
       return; // Prevent further execution if KYC status is pending
     }
-
+    if (investors.myFunds >= stocksToAssign * stockPrice) {
+      console.log("Sufficent funds u have");
+    } else {
+      alert("No Fund available");
+      return; // Prevent further execution if KYC status is pending
+    }
     console.log(investorDetails.userId);
     console.log("Assigning stocks...");
 

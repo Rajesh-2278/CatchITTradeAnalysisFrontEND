@@ -1,42 +1,93 @@
-/* Styling for buttons */
-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-right: 10px;
-}
-  
-button:hover {
-   background-color: #0056b3;
-}
-
+/* Overall Navbar Styling */
 .navbar {
-    background-color: #2c3e50;
-    color: white;
-    padding: 10px 20px;
+    background-color: #2c3e50; /* Dark Blue background */
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
   
-  /* Container for links */
-.nav-links {
+  /* Navbar Links Styling */
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    color: #ecf0f1;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Hover effects for the navbar links */
+  .nav-link:hover {
+    color: #3498db; /* Light blue on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+  }
+  
+  /* Logout button styling */
+  button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: scale(1.05);
+  }
+  
+  /* Profile Greeting Styling */
+  .navbar > div:last-child {
     display: flex;
     align-items: center;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
+    gap: 15px;
+    color: #ecf0f1;
+  }
+  
+  /* Login/Register buttons */
+  .nav-link:active, button:active {
+    transform: scale(0.98); /* Button active effect */
+  }
+  
+  /* Login/Register section styling when not logged in */
+  .navbar .nav-link:last-child {
+    margin-left: 10px;
+  }
+  
+  /* Styling for the 'Hello' message */
+  .navbar > div:last-child span {
     font-size: 18px;
-    margin-right: 20px;
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: background-color 0.3s ease;
-}
+    font-weight: 600;
+    color: #ecf0f1;
+  }
+  
+  /* Responsive Navbar for small screens */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+  
+    .navbar > div:last-child {
+      margin-top: 15px;
+    }
+  }
+  
