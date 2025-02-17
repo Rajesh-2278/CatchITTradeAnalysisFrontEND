@@ -23,7 +23,7 @@ function App() {
             <Route path='/' element={<Navbar />}>
               <Route path='investors' element={<Investor />} />
               <Route path='registration' element={<Registration />} />
-              <Route path='kycstatus' element={<KycStatuss />} />
+            
               <Route path='history' element={<Historyy />} />
               <Route path='/' element={<Company />} />
               <Route path='assignStocks/:md' element={<Assignstocks />} />
@@ -34,6 +34,7 @@ function App() {
               
 
             </Route>
+            <Route path='kycstatus' element={<KycStatuss />} />
             
           </Routes>
         </div>

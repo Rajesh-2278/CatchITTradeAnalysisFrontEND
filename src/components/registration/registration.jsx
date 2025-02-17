@@ -23,7 +23,7 @@ const Register = () => {
     accountType: '',
     address: '',
     panNumber: '',
-    fundsAvailable: 0,
+    myFunds: 0,
   };
 
   const validationSchema = Yup.object({
@@ -37,7 +37,7 @@ const Register = () => {
     accountType: Yup.string().required('Account Type is required'),
     address: Yup.string().required('Address is required'),
     panNumber: Yup.string().required('PAN Number is required'),
-    fundsAvailable: Yup.number()
+    myFunds: Yup.number()
       .required('Add Minimum amount 5000')
       .positive('Funds Available must be positive')
       .min(5000, 'Minimum amount should be 5000'),
@@ -135,9 +135,9 @@ const Register = () => {
             </div>
 
             <div className="form-control">
-              <label htmlFor="fundsAvailable">Add Funds to your Account</label>
-              <Field type="number" id="fundsAvailable" name="fundsAvailable" />
-              <ErrorMessage name="fundsAvailable" component="div" className="error" />
+              <label htmlFor="myFunds">Add Funds to your Account</label>
+              <Field type="number" id="myFunds" name="myFunds" />
+              <ErrorMessage name="myFunds" component="div" className="error" />
             </div>
 
             <div className="form-control">

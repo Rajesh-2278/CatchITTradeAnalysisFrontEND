@@ -95,7 +95,7 @@ const MyProfile = () => {
                     </tr>
                     <tr>
                         <td>Funds Available:</td>
-                        <td>{investorDetails.fundsAvailable}</td>
+                        <td>{investorDetails.myFunds}</td>
                     </tr>
                     <tr>
                         <td>Invested Amount:</td>
