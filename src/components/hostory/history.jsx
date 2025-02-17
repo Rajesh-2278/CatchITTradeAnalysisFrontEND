@@ -34,9 +34,8 @@ const Historyy = () => {
           const color = company.color || 'green';  // Default to green if no color is specified in the data
           return (
             <div className='investor-box' key={company.id}>
-              <h2 style={{ color: color }}> {company.name}</h2>
+              <h3 style={{ color: "blue" }}>  {company.companyName} </h3>
               <h3 style={{ color: color }}> Purchased Date and Time - {company.dateTime} </h3>
-              <h3 style={{ color: color }}> Company name - {company.companyName} </h3>
               <h3 style={{ color: color }}> Stocks- {company.stockCount}</h3>
               <h3 style={{ color: color }}> MoneySpent - {company.moneySpent}</h3>
             </div>

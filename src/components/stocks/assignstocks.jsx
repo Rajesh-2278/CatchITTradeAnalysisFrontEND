@@ -78,10 +78,11 @@ const Assignstocks = ({ md, stockPrice }) => {
       <div>
         <input
           type="number"
+          placeholder='Enter number of stocks'
           value={stocksToAssign}
           onChange={(e) => setStocksToAssign(e.target.value)}
         />
-        Money Required: ₹{stocksToAssign * stockPrice}
+        Money Require: ₹{stocksToAssign * stockPrice}
       </div>
 
       <button className='assignstocks-button' onClick={assignStocks}>Assign Stocks</button>

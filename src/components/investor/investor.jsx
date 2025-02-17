@@ -56,7 +56,7 @@ const Investor = () => {
       {
         data.map((company) => (
           <div className='investor-box' key={company.id}>
-             <h2 style={{ color: 'green' }}> {company.id}</h2>
+             
             <h2 style={{ color: 'green' }}> {company.name}</h2>
             <h3 style={{ color: 'green' }}> Invested - {company.stockCount} </h3>
             {/* <h3 style={{ color: 'green' }}> Total Invested Money - {company.totalInvestedMoney} </h3> */}

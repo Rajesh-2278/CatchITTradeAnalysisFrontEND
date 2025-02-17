@@ -36,11 +36,12 @@ const MyProfile = () => {
     };
 
     const handleAddAmount = () => {
-        const payload = { amount: parseInt(amountToAdd) };
+        const payload = { amountToAdd: parseInt(amountToAdd) };
         console.log("Request payload:", payload);
 
         axios.put(`http://localhost:9091/investor/${contextInvestorDetails.userId}/add-funds`, payload)
             .then((resp) => {
+                console.log("API req body", payload);
                 console.log("API response:", resp.data); // Log the API response
                 setData(resp.data);
                 setShowAddFunds(false);

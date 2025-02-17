@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { InvestorContext } from '../../contexts/InvestorProvider';
 import Assignstocks from '../stocks/assignstocks';
 import PointsChart from '../../PointsChart';
 import BarChart from '../../charts/barchart';
 import './company.css';
 import { CompanyDescription } from './companyDescription';
 
+
+
 const Company = () => {
     const [companies, setCompanies] = useState([]);
     const [search, setSearch] = useState("");
-
+    const { investorDetails } = useContext(InvestorContext); 
     const [filteredCompanies, setFilteredCompanies] = useState(companies);
 
     // Modify the expanded state to track each company individually
@@ -46,7 +48,14 @@ const Company = () => {
     };
 
     const handleBuyStocksClick = (companyId) => {
-        setSelectedCompanyId(companyId); // Show the "Buy Stocks" form for the clicked company
+        if (investorDetails && investorDetails.userId) {
+            console.log("KYC is approved. Proceeding further...");
+            setSelectedCompanyId(companyId); // Show the "Buy Stocks" form for the clicked company
+          } else  {
+            alert("Please login before purchasing...");
+            return; // Prevent further execution if KYC status is pending
+          }
+        
     };
 
     return (
@@ -73,7 +82,7 @@ const Company = () => {
 
                             {/* Financials Table on the top right */}
                             <div className="financials">
-                                <h4>Financials</h4>
+                                <h4>Statistics</h4>
                                 <PointsChart value={company.id} />
                                 <BarChart valuee={company.id} />
                             </div>
@@ -107,7 +116,7 @@ const Company = () => {
                             {expanded[company.id]?.performance && (
                                 <div className="additional-info">
                                     <h4>Performance</h4>
-                                    <p><strong>Profit: </strong> 80% </p>
+                                    <p><strong>Profit: </strong> {company.country} </p>
                                 </div>
                             )}
                         </div>
@@ -124,7 +133,6 @@ const Company = () => {
                             {/* Show Assign Stocks form below if this company is selected */}
                             {selectedCompanyId === company.id && (
                                 <div>
-                                    <h3 style={{ color: 'red' }}> No of stocks</h3>
                                     <Assignstocks md={company.id} stockPrice={company.stockPrice} />
                                 </div>
 
