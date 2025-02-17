@@ -36,7 +36,7 @@ const MyProfile = () => {
     };
 
     const handleAddAmount = () => {
-        const payload = { amount: parseInt(amtAdded) };
+        const payload = { amount: parseInt(amountToAdd) };
         console.log("Request payload:", payload);
 
         axios.put(`http://localhost:9091/investor/${contextInvestorDetails.userId}/add-funds`, payload)
@@ -95,7 +95,7 @@ const MyProfile = () => {
                     </tr>
                     <tr>
                         <td>Funds Available:</td>
-                        <td>{investorDetails.fundsAvailable}</td>
+                        <td>{investorDetails.myFunds}</td>
                     </tr>
                     <tr>
                         <td>Invested Amount:</td>
@@ -109,7 +109,7 @@ const MyProfile = () => {
                 <div className="add-funds">
                     <input
                         type="number"
-                        value={amtAdded}
+                        value={amountToAdd}
                         onChange={handleAmountChange}
                         placeholder="Enter amount to add"
                         step="1" // Allows decimal values

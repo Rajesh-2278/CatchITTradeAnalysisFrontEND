@@ -1,0 +1,32 @@
+/* Main container styling */
+.mainn {
+    padding: 20px;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    font-family: Arial, sans-serif;
+}
+
+/* Table styling */
+.tablee {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+.tablee th, .tablee td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tablee th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tablee tr:hover {
+    background-color: #f1f1f1;
+}
+

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import './kycStatus.css';
 
 
 const KycStatuss = () => {
@@ -32,12 +33,12 @@ const KycStatuss = () => {
            
             {/* 
             <Link to={'/addemploy'}>AddEmployee</Link> */}
-            <table class="table table-success table-striped">
+            <table className='tablee'>
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>name</th>
-                        <th>sal</th>
+                        <th>PanCard</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -47,9 +48,9 @@ const KycStatuss = () => {
                             .map(
                                 (e) => (<tr key={e.id}>
                                     <td>{e.id}</td>
-                                    <td>{e.name}</td>
-                                    <td>{e.salary}</td>
-                                    <td>  <button onClick={()=>{approve(e.id)}}>Approve</button> </td>
+                                    <td>{e.firstName}</td>
+                                    <td>{e.panNumber}</td>
+                                    <td>  <button onClick={()=>{approve(e.id)}}>Approve</button>  <button >Reject</button></td>
                                 </tr>
                                 ))
                     }
