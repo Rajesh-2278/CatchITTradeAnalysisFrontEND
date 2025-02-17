@@ -115,8 +115,10 @@ const Company = () => {
                             </button>
                             {expanded[company.id]?.performance && (
                                 <div className="additional-info">
-                                    <h4>Performance</h4>
-                                    <p><strong>Profit: </strong> {company.country} </p>
+                                    <p><strong>quarterlyRevenueGrowthYOY: </strong> {company.quarterlyRevenueGrowthYOY} </p>
+                                    <p><strong>quarterlyEarningsGrowthYOY: </strong> {company.country} </p>
+                                    <p><strong>200DayMovingAverage: </strong> {company.day200MovingAverage} </p>
+                                    <p><strong>50DayMovingAverage: </strong> {company.day50MovingAverage} </p>
                                 </div>
                             )}
                         </div>
