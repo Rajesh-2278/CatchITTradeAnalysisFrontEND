@@ -4,7 +4,7 @@
     align-items: flex-start; /* Align items to the start of the flex container */
     height: calc(100vh - 60px); /* Adjust height to account for the navbar height */
     padding-top: 60px; /* Add padding to push the login box below the navbar */
-    background-color: #f0f2f5;
+    /* background-color: #f0f2f5; */
   }
   
   .login-box {

@@ -32,22 +32,6 @@
     transform: scale(1.1); /* Slight zoom effect */
   }
   
-  /* Logout button styling */
-  button {
-    background-color: #e74c3c;
-    color: #fff;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #c0392b; /* Darker red on hover */
-    transform: scale(1.05);
-  }
-  
   /* Profile Greeting Styling */
   .navbar > div:last-child {
     display: flex;
@@ -71,6 +55,30 @@
     font-size: 18px;
     font-weight: 600;
     color: #ecf0f1;
+  }
+
+  .nav-links-user Link{
+    margin: 0px 10px;
+  }
+
+  .greetings{
+    color: white;
+  }
+
+  /* Logout button styling */
+  .logout-button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: scale(1.05);
   }
   
   /* Responsive Navbar for small screens */

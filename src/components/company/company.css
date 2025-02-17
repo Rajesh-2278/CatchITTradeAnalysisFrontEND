@@ -23,7 +23,7 @@ input[type="search"] {
 }
 
 /* Styling for the About and Performance buttons */
-button {
+.company-page-button {
     background-color: #007BFF;
     color: white;
     border: none;
@@ -34,7 +34,7 @@ button {
     margin: 5px 0px;
 }
   
-button:hover {
+.company-page-button:hover {
     background-color: #0056b3;
 }
 

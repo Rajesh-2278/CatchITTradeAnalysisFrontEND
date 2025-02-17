@@ -85,6 +85,15 @@ const UpdateProfile = () => {
                         onChange={handleChange}
                     />
                 </div>
+                <div>
+                    <label>Address:</label>
+                    <input
+                        type="text"
+                        name="address"
+                        value={formData.address || null}
+                        onChange={handleChange}
+                    />
+                </div>
                 <button type="submit">Update Profile</button>
             </form>
             <ToastContainer />

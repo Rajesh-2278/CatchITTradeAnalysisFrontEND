@@ -1,5 +1,5 @@
 /* Styling for buttons */
-button {
+.assignstocks-button {
     background-color: #007BFF;
     color: white;
     border: none;
@@ -10,6 +10,6 @@ button {
     margin-right: 10px;
   }
   
-  button:hover {
+  .assignstocks-button:hover {
     background-color: #0056b3;
   }
