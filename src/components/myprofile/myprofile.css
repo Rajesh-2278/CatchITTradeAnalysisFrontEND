@@ -1,11 +1,19 @@
 .myprofile {
   padding: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
 }
 
 .profile-table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  background-color: #fff;
 }
 
 .profile-table td {
@@ -13,7 +21,7 @@
   border: 1px solid #ddd;
 }
 
-button {
+.profile-button {
   padding: 10px 15px;
   margin-right: 10px;
   background-color: #007bff;
@@ -24,12 +32,12 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.profile-button:hover {
   background-color: #0056b3;
 }
 
 .add-funds {
-  margin-top: 20px;
+  margin: 20px 0px;
 }
 
 .add-funds input {
@@ -41,7 +49,7 @@ button:hover {
 }
 
 .add-funds button {
-  padding: 10px 15px;
+  padding: 11px 15px;
   background-color: #28a745;
   color: #fff;
   border: none;

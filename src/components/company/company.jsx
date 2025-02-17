@@ -81,7 +81,7 @@ const Company = () => {
 
                         {/* About Company button and info */}
                         <div>
-                            <button onClick={() => toggleSection(company.id, 'about')}>
+                            <button className='company-page-button' onClick={() => toggleSection(company.id, 'about')}>
                                 About Company
                             </button>
                             {expanded[company.id]?.about && (
@@ -101,7 +101,7 @@ const Company = () => {
 
                         {/* Performance button and info ////*/}
                         <div>
-                            <button onClick={() => toggleSection(company.id, 'performance')}>
+                            <button className='company-page-button' onClick={() => toggleSection(company.id, 'performance')}>
                                 Performance
                             </button>
                             {expanded[company.id]?.performance && (
@@ -115,7 +115,7 @@ const Company = () => {
                         {/* Buy Stocks Button */}
                         <div>
 
-                            <button style={{ backgroundColor: '#28a745', color: 'white' }}
+                            <button className='company-page-button' style={{ backgroundColor: '#28a745', color: 'white' }}
                                 onClick={() => handleBuyStocksClick(company.id)}>
                                 Buy
 

@@ -84,7 +84,7 @@ const Assignstocks = ({ md, stockPrice }) => {
         Money Required: ₹{stocksToAssign * stockPrice}
       </div>
 
-      <button onClick={assignStocks}>Assign Stocks</button>
+      <button className='assignstocks-button' onClick={assignStocks}>Assign Stocks</button>
 
       {message && <p>{message}</p>}
     </div>

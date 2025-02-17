@@ -36,7 +36,7 @@ const MyProfile = () => {
     };
 
     const handleAddAmount = () => {
-        const payload = { amount: parseInt(amtAdded) };
+        const payload = { amount: parseInt(amountToAdd) };
         console.log("Request payload:", payload);
 
         axios.put(`http://localhost:9091/investor/${contextInvestorDetails.userId}/add-funds`, payload)
@@ -103,13 +103,30 @@ const MyProfile = () => {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={handleEditProfile}>Edit Profile</button>
-            <button onClick={handleAddFunds}>Add Funds</button>
             {showAddFunds && (
                 <div className="add-funds">
                     <input
                         type="number"
-                        value={amtAdded}
+                        value={amountToAdd}
+                        onChange={handleAmountChange}
+                        placeholder="Enter amount to add"
+                        step="1" // Allows decimal values
+                        min="100" // Minimum value is 0
+                    />
+                    <button onClick={handleAddAmount}>Add</button>
+                </div>
+            )}
+            <div className="buttons-group">
+                <button className="profile-button" onClick={handleEditProfile}>Edit Profile</button>
+                <button className="profile-button" onClick={handleAddFunds}>Add Funds</button>
+            </div>
+            {/* <button className="profile-button" onClick={handleEditProfile}>Edit Profile</button>
+            <button className="profile-button" onClick={handleAddFunds}>Add Funds</button> */}
+            {/* {showAddFunds && (
+                <div className="add-funds">
+                    <input
+                        type="number"
+                        value={amountToAdd}
                         onChange={handleAmountChange}
                         placeholder="Enter amount to add"
                         step="1" // Allows decimal values
@@ -117,7 +134,7 @@ const MyProfile = () => {
                     />
                     <button onClick={handleAddAmount}>Add</button>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

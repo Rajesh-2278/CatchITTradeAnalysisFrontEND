@@ -13,7 +13,7 @@ export const CompanyDescription = ({description}) => {
           {isExpanded ? (
             description
           ) : (
-            `${description.split(' ').slice(0, 10).join(' ')}...`
+            `${description?.split(' ').slice(0, 10).join(' ')}...`
           )}
           <span onClick={handleToggle} style={{ color: 'blue', cursor: 'pointer' }}>
             {isExpanded ? ' Read less' : ' Read more'}
